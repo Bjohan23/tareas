@@ -12,5 +12,5 @@ router.get("/", mostrar.vistaPrincipal);
 router.post("/guardarTarea", registrar.registrarTarea);
 router.post("/guardarCurso", registrar.registrarCurso);
 // Middleware para manejar errores
-router.use(mostrar.vistaEror);
+router.use(mostrar.vistaError);
 module.exports = router;
