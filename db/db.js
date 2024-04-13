@@ -1,17 +1,19 @@
-// conectamos con la base de datos de xampp  db : tarea
+// db/db.js
+const postgres = require("postgres");
+require("dotenv").config();
 
-const mysql = require("mysql");
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "tareas",
-});
-db.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("Connected to database");
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+
+const sql = postgres({
+  host: PGHOST,
+  database: PGDATABASE,
+  username: PGUSER,
+  password: PGPASSWORD,
+  port: 5432,
+  ssl: "require",
+  connection: {
+    options: `project=${ENDPOINT_ID}`,
+  },
 });
 
-module.exports = db;
+module.exports = sql;
