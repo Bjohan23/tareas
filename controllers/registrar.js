@@ -1,17 +1,18 @@
+const { query } = require("express");
 const db = require("../db/db");
 
 const registrar = {
   registrarTarea: (req, res) => {
     // Obtener los datos del formulario desde el cuerpo de la solicitud
-    const { titulo, curso, fecha_limite, descripcion } = req.body;
-    console.log("Datos de la tarea:", titulo, curso, fecha_limite, descripcion);
+    const { titulo, fecha_limite, descripcion, curso_id } = req.body;
+    console.log("Datos de la tarea:", titulo, fecha_limite, descripcion);
 
     // Insertar los datos en la base de datos
     const query =
       "INSERT INTO tarea (titulo, curso_id, fecha_limite, descripcion) VALUES (?, ?, ?, ?)";
     db.query(
       query,
-      [titulo, curso, fecha_limite, descripcion],
+      [titulo, curso_id, fecha_limite, descripcion],
       (err, result) => {
         if (err) {
           console.error("Error al guardar la tarea:", err);
@@ -24,6 +25,19 @@ const registrar = {
         }
       }
     );
+  },
+  registrarCurso: (req, res) => {
+    const { curso } = req.body;
+    console.log("Datos del curso:", curso);
+    const query = "INSERT INTO curso (nombre) VALUES (?)";
+    db.query(query, [curso], (err, result) => {
+      if (err) {
+        console.error("Error al guardar el curso:", err);
+        res.status(500).send("Error interno del servidor");
+      }
+      console.log("Curso guardado exitosamente");
+      res.redirect("/");
+    });
   },
 };
 
