@@ -10,6 +10,7 @@ router.use("views", express.static("views"));
 
 router.get("/", mostrar.vistaPrincipal);
 router.post("/guardarTarea", registrar.registrarTarea);
+router.post("/guardarCurso", registrar.registrarCurso);
 // Middleware para manejar errores
 router.use(mostrar.vistaEror);
 module.exports = router;
