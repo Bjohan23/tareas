@@ -1,9 +1,5 @@
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-  rel="stylesheet"
-/>
-<link rel="stylesheet" href="/css/style.css" />
-<div class="m-2">
+<!--  -->
+
   <div class="grid items-start md:grid-cols-2 md:items-center gap-4">
     <form action="/guardarTarea" method="post" autocomplete="off">
       <div class="space-y-4 p-8 sombra">
@@ -109,14 +105,18 @@
           </p>
           <p class="text-sm text-gray-500 dark:text-gray-400"></p>
         </div>
-        <button
+
+        <a
+          href="/editarTarea/<%= tareas.id  %>"
           class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
         >
           Editar
-        </button>
+        </a>
 
         <button
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          type="button"
+          class="delete-tarea inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          data-id="<%= tareas.id %>"
         >
           Eliminar
         </button>
@@ -124,9 +124,8 @@
       <% }) %>
     </div>
   </div>
-</div>
 
-<!-- Main modal -->
+<!-- Main modal  - registra curso-->
 <div
   id="crud-modal"
   tabindex="-1"
@@ -196,6 +195,4 @@
     </div>
   </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- termina modal curso  -->

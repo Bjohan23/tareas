@@ -6,7 +6,7 @@ const mostrar = {
       const tareas = await sql`SELECT * FROM tarea`;
       const curso = await sql`SELECT * FROM curso`;
 
-      res.render("index", { tareas: tareas, curso: curso });
+      res.render("tarea", { tareas: tareas, curso: curso });
     } catch (error) {
       console.error(error);
       res
