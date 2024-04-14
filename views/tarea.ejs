@@ -1,129 +1,115 @@
 <!--  -->
 
-  <div class="grid items-start md:grid-cols-2 md:items-center gap-4">
-    <form action="/guardarTarea" method="post" autocomplete="off">
-      <div class="space-y-4 p-8 sombra">
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="task"
-          >
-            Tarea
-          </label>
-          <input
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="titulo"
-            name="titulo"
-            placeholder="Escriba el nombre de la tarea"
-          />
-        </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="curso_id"
-          >
-            Curso
-          </label>
-          <!-- listas de cursos  -->
-          <select
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="curso_id"
-            name="curso_id"
-          >
-            <option value="">Selecciona un curso</option>
-            <!-- Aquí puedes cargar dinámicamente las opciones de categoría desde la base de datos -->
-            <% curso.forEach(curso => { %>
-            <option value="<%= curso.id %>"><%= curso.nombre %></option>
-            <% }); %>
-          </select>
-        </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="date"
-          >
-            Fecha
-          </label>
-          <input
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="fecha_limite"
-            name="fecha_limite"
-            type="date"
-          />
-        </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="description"
-          >
-            Descripción
-          </label>
-          <textarea
-            class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
-            id="descripcion"
-            name="descripcion"
-            placeholder="Escriba la descripción de la tarea"
-          ></textarea>
-        </div>
-        <button
-          class="inline-flex items-center justify-center btn whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-          type="submit"
-        >
-          Registrar
-        </button>
-      </div>
-    </form>
-
+<div class="grid items-start md:grid-cols-2 md:items-center gap-4">
+  <form action="/guardarTarea" method="post" autocomplete="off">
     <div class="space-y-4 p-8 sombra">
-      <!-- boton  Modal toggle -->
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="task"
+        >
+          Tarea
+        </label>
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="titulo"
+          name="titulo"
+          placeholder="Escriba el nombre de la tarea"
+        />
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="curso_id"
+        >
+          Curso
+        </label>
+        <!-- listas de cursos  -->
+        <select
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="curso_id"
+          name="curso_id"
+        >
+          <option value="">Selecciona un curso</option>
+          <!-- Aquí puedes cargar dinámicamente las opciones de categoría desde la base de datos -->
+          <% curso.forEach(curso => { %>
+          <option value="<%= curso.id %>"><%= curso.nombre %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="date"
+        >
+          Fecha
+        </label>
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="fecha_limite"
+          name="fecha_limite"
+          type="date"
+        />
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="description"
+        >
+          Descripción
+        </label>
+        <textarea
+          class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
+          id="descripcion"
+          name="descripcion"
+          placeholder="Escriba la descripción de la tarea"
+        ></textarea>
+      </div>
+      <button
+        class="inline-flex items-center justify-center btn whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+        type="submit"
+      >
+        Registrar
+      </button>
+    </div>
+  </form>
+
+  <div class="space-y-4 p-8 sombra">
+    <% tareas.forEach(tareas => { %>
+    <div class="flex items-center space-x-4">
+      <div class="flex-1">
+        <h3 class="text-lg font-bold">
+          <% curso.forEach(curso => { %> <% if(tareas.curso_id == curso.id) { %>
+          <%= curso.nombre %> <% } %> <% }); %> - <%= new
+          Date(tareas.fecha_limite).toLocaleDateString("es-PE")%>
+        </h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          <strong><%= tareas.titulo%></strong>
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          <%= tareas.descripcion %>
+        </p>
+      </div>
+
+      <a
+        href="/editarTarea/<%= tareas.id  %>"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+      >
+        Editar
+      </a>
 
       <button
         type="button"
-        class="btn inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-        data-modal-target="crud-modal"
-        data-modal-toggle="crud-modal"
-        data-twe-ripple-init
-        data-twe-ripple-color="light"
+        class="delete-tarea inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+        data-id="<%= tareas.id %>"
       >
-        Nuevo Curso
+        Eliminar
       </button>
-      <!-- fin boton  toggle -->
-
-      <% tareas.forEach(tareas => { %>
-      <div class="flex items-center space-x-4">
-        <div class="flex-1">
-          <h3 class="text-lg font-bold">
-            <% curso.forEach(curso => { %> <% if(tareas.curso_id == curso.id) {
-            %> <%= curso.nombre %> <% } %> <% }); %> - <%= new
-            Date(tareas.fecha_limite).toLocaleDateString("es-PE")%>
-          </h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">
-            <strong><%= tareas.titulo%></strong>
-          </p>
-          <p class="text-sm text-gray-500 dark:text-gray-400">
-            <%= tareas.descripcion %>
-          </p>
-          <p class="text-sm text-gray-500 dark:text-gray-400"></p>
-        </div>
-
-        <a
-          href="/editarTarea/<%= tareas.id  %>"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-        >
-          Editar
-        </a>
-
-        <button
-          type="button"
-          class="delete-tarea inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-          data-id="<%= tareas.id %>"
-        >
-          Eliminar
-        </button>
-      </div>
-      <% }) %>
     </div>
+    <hr />
+    <% }) %>
   </div>
+</div>
 
 <!-- Main modal  - registra curso-->
 <div
