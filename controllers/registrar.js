@@ -23,7 +23,7 @@ const registrar = {
       await sql`INSERT INTO curso (nombre) VALUES (${curso})`;
 
       console.log("Curso guardado exitosamente");
-      res.redirect("/");
+      res.redirect("cursos");
     } catch (error) {
       console.error("Error al guardar el curso:", error);
       res.status(500).send("Error interno del servidor");

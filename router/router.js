@@ -11,14 +11,20 @@ router.use(morgan("dev"));
 router.use("views", express.static("views"));
 // mostrar
 router.get("/", mostrar.vistaPrincipal);
+router.get("/cursos", mostrar.mostrarCursos);
+// editar
 router.get("/editarTarea/:id", editar.vistaEditarTarea);
+router.get("/editarCurso/:id", editar.vistaEditarCurso);
+// actualizar
 router.post("/actualizarTarea", editar.actualizarTarea);
+router.post("/actualizarCurso", editar.actualizarCurso);
 
 // guardar o registrar
 router.post("/guardarTarea", registrar.registrarTarea);
 router.post("/guardarCurso", registrar.registrarCurso);
 // eliminar
 router.delete("/eliminarTarea/:id", eliminar.eliminarTarea);
+router.delete("/eliminarCurso/:id", eliminar.eliminarCurso);
 // Middleware para manejar errores
 router.use(mostrar.vistaError);
 module.exports = router;

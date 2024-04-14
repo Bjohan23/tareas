@@ -15,6 +15,8 @@ h6 {
   color: white;
 }
 body {
+  /* background-color: #848d9c; */
+  font-family: "Poppins", sans-serif;
   font-family: "Yeseva One", sans-serif;
   --font-sans: "Yeseva One";
 }

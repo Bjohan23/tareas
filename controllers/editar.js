@@ -34,6 +34,33 @@ const editar = {
       res.status(500).send("Error interno del servidor");
     }
   },
+
+  vistaEditarCurso: async (req, res) => {
+    try {
+      const { id } = req.params;
+      console.log("ID del curso:", id);
+
+      const cursos = await sql`SELECT * FROM curso WHERE id = ${id}`;
+      res.render("editar_curso", { cursos: cursos[0] });
+    } catch (error) {
+      console.error("Error al editar el curso:", error);
+      res.status(500).send("Error interno del servidor");
+    }
+  },
+  actualizarCurso: async (req, res) => {
+    try {
+      const { nombre, id } = req.body;
+      console.log("Datos del nombre:", nombre, id);
+
+      await sql`UPDATE curso SET nombre = ${nombre} WHERE id = ${id}`;
+
+      console.log("nombre actualizado exitosamente");
+      res.redirect("cursos");
+    } catch (error) {
+      console.error("Error al actualizar el nombre:", error);
+      res.status(500).send("Error interno del servidor");
+    }
+  },
 };
 
 module.exports = editar;
