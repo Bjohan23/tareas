@@ -1,6 +1,4 @@
-<!--  -->
-
-<div class="grid items-start md:grid-cols-2 md:items-center gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
   <form action="/guardarTarea" method="post" autocomplete="off">
     <div class="space-y-4 p-8 sombra">
       <div class="space-y-2">
@@ -24,14 +22,12 @@
         >
           Curso
         </label>
-        <!-- listas de cursos  -->
         <select
           class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           id="curso_id"
           name="curso_id"
         >
           <option value="">Selecciona un curso</option>
-          <!-- Aquí puedes cargar dinámicamente las opciones de categoría desde la base de datos -->
           <% curso.forEach(curso => { %>
           <option value="<%= curso.id %>"><%= curso.nombre %></option>
           <% }); %>
@@ -76,7 +72,9 @@
 
   <div class="space-y-4 p-8 sombra">
     <% tareas.forEach(tareas => { %>
-    <div class="flex items-center space-x-4">
+    <div
+      class="flex flex-col md:flex-row items-center space-x-4 space-y-4 md:space-y-0"
+    >
       <div class="flex-1">
         <h3 class="text-lg font-bold">
           <% curso.forEach(curso => { %> <% if(tareas.curso_id == curso.id) { %>
@@ -91,24 +89,54 @@
         </p>
       </div>
 
-      <a
-        href="/editarTarea/<%= tareas.id  %>"
-        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-      >
-        Editar
-      </a>
-
-      <button
-        type="button"
-        class="delete-tarea inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-        data-id="<%= tareas.id %>"
-      >
-        Eliminar
-      </button>
+      <div class="flex items-center space-x-2">
+        <a
+          href="/editarTarea/<%= tareas.id %>"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+        >
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
+              clip-rule="evenodd"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Editar
+        </a>
+        <button
+          type="button"
+          class="delete-tarea inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          data-id="<%= tareas.id %>"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              fill="currentColor"
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+            />
+          </svg>
+          Eliminar
+        </button>
+      </div>
     </div>
     <hr />
     <% }) %>
   </div>
 </div>
-
-
