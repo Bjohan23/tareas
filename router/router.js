@@ -12,6 +12,7 @@ router.use("views", express.static("views"));
 // mostrar
 router.get("/", mostrar.vistaPrincipal);
 router.get("/cursos", mostrar.mostrarCursos);
+router.get("/horario", mostrar.mostrarHorario);
 // editar
 router.get("/editarTarea/:id", editar.vistaEditarTarea);
 router.get("/editarCurso/:id", editar.vistaEditarCurso);

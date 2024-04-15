@@ -92,3 +92,9 @@ body {
   left: 0px;
   transform-origin: right;
 }
+
+/* horario */
+.verde { 
+  background-color: #3acb96;
+  color: #fff;
+}
